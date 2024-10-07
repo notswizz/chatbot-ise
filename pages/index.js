@@ -29,15 +29,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-center mt-4">
-        <Image
-          src="/iselogo.png"
-          alt="ISE Logo"
-          width={100}
-          height={100}
-          className="object-contain"
-        />
-      </div>
+     
     </div>
   );
 }
