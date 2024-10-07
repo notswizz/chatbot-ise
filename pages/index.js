@@ -11,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="bg-white shadow-xl rounded-3xl overflow-hidden w-full max-w-full sm:max-w-2xl flex flex-col" style={{ height: '70vh' }}>
+      <div className="bg-white shadow-xl rounded-3xl overflow-hidden w-full max-w-full sm:max-w-2xl flex flex-col" style={{ height: '100vh' }}>
         <div className="relative">
           <Image
             src="/isecover.jpeg"
@@ -29,7 +29,15 @@ export default function Home() {
         </div>
       </div>
 
-     
+      <div className="flex justify-center mt-4">
+        <Image
+          src="/iselogo.png"
+          alt="ISE Logo"
+          width={100}
+          height={100}
+          className="object-contain"
+        />
+      </div>
     </div>
   );
 }
