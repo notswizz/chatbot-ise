@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import ReactMarkdown from 'react-markdown';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaUserCircle, FaRobot, FaCheckCircle } from 'react-icons/fa';
+import { FaUserCircle, FaRobot, FaCheckCircle, FaRedo } from 'react-icons/fa';
 import { Typewriter } from 'react-simple-typewriter';
 
 export default function Chatbot() {
@@ -48,6 +48,14 @@ export default function Chatbot() {
     if (name.trim() === '') return;
     setUserName(name);
     localStorage.setItem('userName', name);
+    setInput(''); // Clear the input field after submitting the name
+  };
+
+  const handleResetName = () => {
+    localStorage.removeItem('userName');
+    setUserName('');
+    setInput(''); // Clear the input field for new name entry
+    window.location.reload(); // Refresh the page to clear chat messages
   };
 
   const handleSubmit = async (message) => {
@@ -79,32 +87,50 @@ export default function Chatbot() {
     }, 3000);
   };
 
+  const isValidEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full border-4 border-blue-500">
       <div className="flex-grow overflow-y-auto space-y-4 p-4">
         {!userName ? (
-          <div className="flex items-center justify-center">
-            <form onSubmit={(e) => { e.preventDefault(); handleNameSubmit(input); }} className="flex items-center space-x-3">
-              <input
-                type="text"
-                className="flex-grow rounded-full p-4 border border-gray-300 text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition"
-                placeholder="   enter email to unlock"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-              />
-              <button
-                type="submit"
-                className={`flex items-center justify-center w-12 h-12 rounded-full font-bold transition shadow-md ${
-                  input.trim() === '' ? 'bg-gray-300 text-gray-500' : 'bg-green-600 text-white hover:bg-green-700'
-                }`}
-                disabled={input.trim() === ''}
-              >
-                <FaCheckCircle className="h-6 w-6" />
-              </button>
+          <div className="flex items-center justify-center h-7/8 bg-gradient-to-r from-blue-300 to-blue-400 p-24">
+            <form onSubmit={(e) => { e.preventDefault(); handleNameSubmit(input); }} className="w-full max-w-md bg-white rounded-lg shadow-lg p-6 space-y-4">
+              <div className="flex justify-center mb-4">
+                <img src="/iselogo.png" alt="ISE Logo" className="h-64 w-auto" />
+              </div>
+            
+              <div className="flex items-center space-x-3">
+                <input
+                  type="text"
+                  className={`rounded-full p-4 border border-gray-300 text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition ${isValidEmail(input) ? 'flex-grow' : 'w-full'}`}
+                  placeholder="Enter your email..."
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                />
+                {isValidEmail(input) && (
+                  <button
+                    type="submit"
+                    className="flex items-center justify-center w-12 h-12 rounded-full bg-green-600 text-white hover:bg-green-700 font-bold transition shadow-md"
+                  >
+                    <FaCheckCircle className="h-6 w-6" />
+                  </button>
+                )}
+              </div>
             </form>
           </div>
         ) : (
           <>
+            <div className="flex justify-end p-2">
+              <button
+                onClick={handleResetName}
+                className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 transition shadow-sm"
+              >
+                <FaRedo className="h-4 w-4" />
+              </button>
+            </div>
             {!conversationStarted && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {prompts.map((prompt, index) => (
