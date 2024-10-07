@@ -24,12 +24,13 @@ export default function Chatbot() {
 
   const prompts = [
     "What services does ISE offer?",
+    "How does ISE support sports marketing?",
     "Can you tell me about ISE's recent projects?",
     "What makes ISE unique in the industry?",
     "How can ISE enhance brand visibility?",
     "What partnerships does ISE have?",
     "How does ISE engage with communities?",
-
+    "What are ISE's future goals?"
   ];
 
   const scrollToBottom = () => {
@@ -90,7 +91,7 @@ export default function Chatbot() {
   };
 
   return (
-    <div className="flex flex-col h-full border-4 border-blue-500">
+<div className="flex flex-col h-full border-2 border-blue-300 rounded-lg">
       <div className="flex-grow overflow-y-auto space-y-4 p-4">
         {!userName ? (
           <div className="flex items-center justify-center h-full bg-gradient-to-r from-blue-300 to-blue-400 p-4 sm:p-8">
@@ -98,11 +99,11 @@ export default function Chatbot() {
               <div className="flex justify-center mb-4">
                 <img src="/iselogo.png" alt="ISE Logo" className="h-32 sm:h-64 w-auto" />
               </div>
-           
-              <div className="flex items-center space-x-3">
+             
+              <div className="flex flex-col space-y-3">
                 <input
                   type="text"
-                  className={`rounded-full p-3 sm:p-4 border border-gray-300 text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition ${isValidEmail(input) ? 'flex-grow' : 'w-full'}`}
+                  className="rounded-full p-3 sm:p-4 border border-gray-300 text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition"
                   placeholder="Enter your email..."
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
@@ -110,14 +111,13 @@ export default function Chatbot() {
                 {isValidEmail(input) && (
                   <button
                     type="submit"
-                    className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-green-600 text-white hover:bg-green-700 font-bold transition shadow-md"
+                    className="flex items-center justify-center w-full h-12 rounded-full bg-green-600 text-white hover:bg-green-700 font-bold transition shadow-md"
                   >
-                    <FaCheckCircle className="h-5 w-5 sm:h-6 sm:w-6" />
+                    <FaCheckCircle className="h-6 w-6 mr-2" />
+                    Submit
                   </button>
                 )}
-                
               </div>
-             
             </form>
           </div>
         ) : (
