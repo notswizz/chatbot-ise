@@ -24,13 +24,10 @@ export default function Chatbot() {
 
   const prompts = [
     "What services does ISE offer?",
-    "How does ISE support sports marketing?",
-    "Can you tell me about ISE's recent projects?",
-    "What makes ISE unique in the industry?",
-    "How can ISE enhance brand visibility?",
-    "What partnerships does ISE have?",
-    "How does ISE engage with communities?",
-    "What are ISE's future goals?"
+    "An EMAIL sent me here...",
+    "Can you tell me about ISE's past projects?",
+    "What current partnerships does ISE have?",
+
   ];
 
   const scrollToBottom = () => {
@@ -131,7 +128,7 @@ export default function Chatbot() {
               </button>
             </div>
             {!conversationStarted && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 py-4 px-4 sm:grid-cols-1 gap-10">
                 {prompts.map((prompt, index) => (
                   <button
                     key={index}
