@@ -4,7 +4,7 @@ import Chatbot from '../components/Chatbot';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-blue-100 flex flex-col justify-center items-center px-4 sm:px-0">
+    <div className="min-h-screen h-screen overflow-hidden bg-gradient-to-b from-blue-50 to-blue-100 flex flex-col justify-center items-center px-4 sm:px-0">
       <Head>
         <title>ISE Chatbot</title>
         <meta name="description" content="ISE Chatbot Home Page" />
@@ -24,7 +24,7 @@ export default function Home() {
           <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 text-white text-lg sm:text-2xl font-bold">ISE Chatbot</div>
         </div>
 
-        <div className="flex-grow p-4 sm:p-6">
+        <div className="flex-grow p-4 sm:p-6 overflow-hidden">
           <Chatbot />
         </div>
       </div>
