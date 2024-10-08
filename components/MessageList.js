@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown';
 import { Typewriter } from 'react-simple-typewriter';
 import { useEffect, useRef } from 'react';
 
+// ... existing imports ...
+
 export default function MessageList({ messages }) {
   const containerRef = useRef(null);
 
@@ -14,7 +16,7 @@ export default function MessageList({ messages }) {
   }, [messages]);
 
   return (
-    <div ref={containerRef} className="overflow-y-auto max-h-full p-6 space-y-6 bg-gray-50">
+    <div ref={containerRef} className="overflow-y-auto max-h-full p-4 space-y-4 bg-gray-50 sm:p-6 sm:space-y-6">
       {messages.map((message, index) => (
         <motion.div
           key={index}
@@ -25,12 +27,12 @@ export default function MessageList({ messages }) {
           transition={{ duration: 0.3 }}
         >
           {!message.isUser && (
-            <FaRobot className="text-indigo-500 w-10 h-10 mr-4" />
+            <FaRobot className="text-indigo-500 w-8 h-8 mr-2 sm:w-10 sm:h-10 sm:mr-4" />
           )}
           {message.isUser && (
-            <FaUserCircle className="text-indigo-500 w-10 h-10 mr-4" />
+            <FaUserCircle className="text-indigo-500 w-8 h-8 mr-2 sm:w-10 sm:h-10 sm:mr-4" />
           )}
-          <div className={`${message.isUser ? 'bg-indigo-600 text-white' : 'bg-white text-gray-900'} rounded-lg px-6 py-4 max-w-md shadow-md`}>
+          <div className={`${message.isUser ? 'bg-indigo-600 text-white' : 'bg-white text-gray-900'} rounded-lg px-3 py-2 max-w-xs sm:max-w-md shadow-md`}>
             {message.isUser ? (
               <ReactMarkdown className="prose prose-sm">
                 {message.text}

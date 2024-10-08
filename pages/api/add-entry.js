@@ -37,6 +37,13 @@ export default async function handler(req, res) {
           createdAt: new Date()
         });
         res.status(200).json({ message: 'Note added successfully' });
+      } else if (category === 'email') {
+        collection = db.collection('emails');
+        await collection.insertOne({
+          email: data.email,
+          createdAt: new Date()
+        });
+        res.status(200).json({ message: 'Email logged successfully' });
       } else {
         res.status(400).json({ error: 'Invalid category' });
       }

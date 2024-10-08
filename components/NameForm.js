@@ -16,7 +16,7 @@ export default function NameForm({ input, setInput, handleNameSubmit }) {
           <input
             type="text"
             className="rounded-full p-3 sm:p-4 border border-gray-300 text-gray-800 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 shadow-sm transition"
-            placeholder="Enter your email..."
+            placeholder="Enter your name..."
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />

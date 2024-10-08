@@ -66,6 +66,11 @@ export default function Chatbot() {
     setConversationHistory(prevHistory => [...prevHistory, userMessage]);
     setInput('');
 
+    const email = detectEmail(message);
+    if (email) {
+      await logEmail(email);
+    }
+
     const response = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -81,6 +86,34 @@ export default function Chatbot() {
     setTimeout(() => {
       setIsResponding(false);
     }, 3000);
+  };
+
+  const detectEmail = (message) => {
+    const emailRegex = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/;
+    const match = message.match(emailRegex);
+    return match ? match[0] : null;
+  };
+
+  const logEmail = async (email) => {
+    try {
+      const response = await fetch('/api/add-entry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          category: 'email',
+          data: { email },
+        }),
+      });
+
+      const result = await response.json();
+      if (response.ok) {
+        console.log('Email logged successfully:', result.message);
+      } else {
+        console.error('Error logging email:', result.error);
+      }
+    } catch (error) {
+      console.error('Error logging email:', error);
+    }
   };
 
   return (
