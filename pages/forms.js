@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-import TeamForm from '../components/TeamForm';
-import DealForm from '../components/DealForm';
-import NoteForm from '../components/NoteForm';
+import TeamForm from '../components/Forms/TeamForm';
+import DealForm from '../components/Forms/DealForm';
+import NoteForm from '../components/Forms/NoteForm';
 
 export default function Forms() {
   const [activeForm, setActiveForm] = useState('team');

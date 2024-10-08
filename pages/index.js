@@ -18,7 +18,7 @@ export default function Home() {
             alt="ISE Cover"
             width={800}
             height={300}
-            className="w-full h-32 sm:h-48 object-cover"
+            className="w-full h-32 sm:h-32 object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-50"></div>
           <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 text-white text-lg sm:text-2xl font-bold">ISE Chatbot</div>
