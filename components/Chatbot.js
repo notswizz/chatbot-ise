@@ -118,7 +118,7 @@ export default function Chatbot() {
 
   return (
     <div className="flex flex-col h-full border-2 border-blue-300 rounded-lg">
-      <div className="flex-grow overflow-y-auto space-y-4 p-4" style={{ maxHeight: '80vh' }}>
+      <div className="flex-grow flex flex-col overflow-hidden">
         {!userName ? (
           <NameForm input={input} setInput={setInput} handleNameSubmit={handleNameSubmit} />
         ) : (
@@ -126,7 +126,7 @@ export default function Chatbot() {
             <div className="flex justify-end p-2">
               <button
                 onClick={handleResetName}
-                className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 transition shadow-sm"
+                className="flex items-center justify-center w-8 h-2 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 transition shadow-sm"
               >
                 <FaRedo className="h-4 w-4" />
               </button>
@@ -134,12 +134,14 @@ export default function Chatbot() {
             {!conversationStarted && (
               <PromptButtons prompts={prompts} handleSubmit={handleSubmit} />
             )}
-            <AnimatePresence initial={false}>
-              <MessageList messages={messages} />
-            </AnimatePresence>
+            <div className="flex-grow overflow-y-auto space-y-4 p-4">
+              <AnimatePresence initial={false}>
+                <MessageList messages={messages} />
+              </AnimatePresence>
+              <div ref={messagesEndRef} />
+            </div>
           </>
         )}
-        <div ref={messagesEndRef} />
       </div>
       {userName && (
         <MessageInput

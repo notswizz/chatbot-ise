@@ -16,7 +16,7 @@ export default function MessageList({ messages }) {
   }, [messages]);
 
   return (
-    <div ref={containerRef} className="overflow-y-auto max-h-full p-4 space-y-4 bg-gray-50 sm:p-6 sm:space-y-6">
+    <div ref={containerRef} className="overflow-y-auto max-h-full p-4 space-y-4  sm:p-6 sm:space-y-6">
       {messages.map((message, index) => (
         <motion.div
           key={index}

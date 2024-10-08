@@ -1,6 +1,6 @@
 export default function PromptButtons({ prompts, handleSubmit }) {
     return (
-      <div className="grid grid-cols-1 py-4 px-4 sm:grid-cols-1 gap-6">
+      <div className="grid grid-cols-1 py-4 px-4 sm:grid-cols-1 gap-3">
         {prompts.map((prompt, index) => (
           <button
             key={index}
