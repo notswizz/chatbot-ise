@@ -1,14 +1,15 @@
 import { FaCheckCircle } from 'react-icons/fa';
 
 export default function NameForm({ input, setInput, handleNameSubmit }) {
-  const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
   return (
     <div className="flex items-center justify-center h-full bg-gradient-to-r from-blue-300 to-blue-400 p-4 sm:p-8">
-      <form onSubmit={(e) => { e.preventDefault(); handleNameSubmit(input); }} className="w-full max-w-md bg-white rounded-lg shadow-lg p-4 sm:p-6 space-y-4">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleNameSubmit(input);
+        }}
+        className="w-full max-w-md bg-white rounded-lg shadow-lg p-4 sm:p-6 space-y-4"
+      >
         <div className="flex justify-center mb-4">
           <img src="/iselogo.png" alt="ISE Logo" className="h-32 sm:h-64 w-auto" />
         </div>
@@ -20,7 +21,7 @@ export default function NameForm({ input, setInput, handleNameSubmit }) {
             value={input}
             onChange={(e) => setInput(e.target.value)}
           />
-          {isValidEmail(input) && (
+          {input.trim() && (
             <button
               type="submit"
               className="flex items-center justify-center w-full h-12 rounded-full bg-green-600 text-white hover:bg-green-700 font-bold transition shadow-md"

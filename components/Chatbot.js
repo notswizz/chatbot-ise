@@ -48,12 +48,7 @@ export default function Chatbot() {
     setInput('');
   };
 
-  const handleResetName = () => {
-    localStorage.removeItem('userName');
-    setUserName('');
-    setInput('');
-    window.location.reload();
-  };
+
 
   const handleSubmit = async (message) => {
     if (message.trim() === '') return;
@@ -123,14 +118,7 @@ export default function Chatbot() {
           <NameForm input={input} setInput={setInput} handleNameSubmit={handleNameSubmit} />
         ) : (
           <>
-            <div className="flex justify-end p-2">
-              <button
-                onClick={handleResetName}
-                className="flex items-center justify-center w-8 h-2 rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 transition shadow-sm"
-              >
-                <FaRedo className="h-4 w-4" />
-              </button>
-            </div>
+           
             {!conversationStarted && (
               <PromptButtons prompts={prompts} handleSubmit={handleSubmit} />
             )}
